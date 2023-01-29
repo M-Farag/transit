@@ -1,0 +1,18 @@
+{
+    "name": "concept/transit",
+    "description": "A minimal API requests processor",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Concept\\Transit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mina Amin",
+            "email": "mina.farag@icloud.com"
+        }
+    ],
+    "require": {}
+}
