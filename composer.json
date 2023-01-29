@@ -14,5 +14,7 @@
             "email": "mina.farag@icloud.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php":">=5.5.0"
+    }
 }
