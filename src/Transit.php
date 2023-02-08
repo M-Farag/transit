@@ -15,6 +15,12 @@ class Transit {
      * Call
      * Perform parallel API calls using CURL Multi
      *
+     * TODO
+     * - Requests validations
+     * - Enhance processing the requests
+     * - Add documentation
+     * - Add get results data
+     * 
      * @param array $requests
      * @return array $results
      */
