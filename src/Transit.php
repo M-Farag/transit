@@ -73,4 +73,23 @@ class Transit {
         return $data;
     }
 
+	/**
+	 * Validate that the requests array contains the main request components
+	 * 
+	 * Required params
+	 * - uri: The destination uri that you want to send the api request to
+	 * - method: The type of the http method (get,post,put,delete)
+	 * - headers: The requests headers array
+	 * 
+	 * Optional params
+	 * - body: The body array
+	 *
+	 * @param array $requests
+	 * @return array
+	 */
+	private function validate_requests_array(array $requests):array
+	{
+
+	}
+
 }
