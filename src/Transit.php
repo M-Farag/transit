@@ -85,10 +85,11 @@ class Transit {
 	 * - body: The body array
 	 *
 	 * @param array $requests
-	 * @return array
+	 * @return array $validated
 	 */
 	private function validate_requests_array(array $requests):array
 	{
+		// check for required keys
 
 	}
 
