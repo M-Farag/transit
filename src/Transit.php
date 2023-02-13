@@ -87,10 +87,27 @@ class Transit {
 	 * @param array $requests
 	 * @return array $validated
 	 */
-	private function validate_requests_array(array $requests):array
+	private function validated_requests(array $requests):array
 	{
-		// check for required keys
+		$validated = [];
+		foreach($requests as $request) {
+			// Check keys
+			if( ! array_key_exists('uri',$request)){
+				continue;
+			}
 
+			if( ! array_key_exists('method',$request)){
+				continue;
+			}
+
+			if( ! array_key_exists('headers',$request)){
+				continue;
+			}
+
+			$validated[] = $request;
+		}
+
+		return $validated;
 	}
 
 }
