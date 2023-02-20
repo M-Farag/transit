@@ -26,11 +26,13 @@ class Transit {
      */
     public function call(array $requests) :array
     {
+		//Validation
+		$validated_requests = $this->validated_requests($requests);
 
         $channels = array();
 
 		$multi = curl_multi_init();
-		foreach ( $requests as $request ) {
+		foreach ( $$validated_requests as $request ) {
 
 			$channel = curl_init();
 			curl_setopt( $channel, CURLOPT_URL, "uri" );
