@@ -30,16 +30,25 @@ class Transit {
         $channels = array();
 
 		$multi = curl_multi_init();
-		foreach ( $$validated_requests as $request ) {
+		foreach ( $validated_requests as $request ) {
 
 			$channel = curl_init();
-			curl_setopt( $channel, CURLOPT_URL, "uri" );
-			curl_setopt( $channel, CURLOPT_HTTPHEADER, array( "Authorization: Bearer token_if_needed" ) );
+			curl_setopt( $channel, CURLOPT_URL, $request['uri'] );
+			if (isset($request['api_key']))
+			{
+				curl_setopt( $channel, CURLOPT_HTTPHEADER, array( "Authorization: Bearer {$request['api_key']}" ) );
+			}
 			curl_setopt( $channel, CURLOPT_RETURNTRANSFER, true );
+
+			if( isset($request['method']) && isset($request['body']) && $request['method'] == 'POST')
+			{
+				curl_setopt($channel, CURLOPT_POST, true);
+				curl_setopt($channel, CURLOPT_POSTFIELDS, $request['body']);
+			}
 
 			curl_multi_add_handle( $multi, $channel );
 
-			$channels[ "request_id" ] = $channel;
+			$channels[] = $channel;
 		}
 
 			/**
@@ -92,15 +101,11 @@ class Transit {
 		$validated = [];
 		foreach($requests as $request) {
 			// Check keys
-			if( ! array_key_exists('uri',$request)){
-				continue;
+			if(! array_key_exists('uri',$request)){
+				continue;				
 			}
 
 			if( ! array_key_exists('method',$request)){
-				continue;
-			}
-
-			if( ! array_key_exists('headers',$request)){
 				continue;
 			}
 
