@@ -2,10 +2,20 @@
 
 namespace Concept\Transit;
 
+use Concept\Transit\Validator\Validator;
+
 class Transit {
+
+	/**
+	 * The validator Object
+	 *
+	 * @var [Validator::class]
+	 */
+	protected $validator;
 
     public function __construct()
     {
+		$this->validator = new Validator();
     }
 
 
