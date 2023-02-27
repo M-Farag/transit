@@ -15,7 +15,7 @@ class Transit {
 
     public function __construct()
     {
-		$this->validator = new Validator();
+		$this->validator = new Validator(['name'=>'Munchy']);
     }
 
 
